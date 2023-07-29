@@ -1,8 +1,13 @@
-import React,{useState} from 'react'
+import React, {useState} from 'react'
 import BlogPost from './BlogPost'
+import UserInput from './UserInput'
 
 
 const Blog = () => {
+
+    let [author,setAuthor] = useState('')
+    let [title,setTitle] = useState('')
+    let [content,setContent] = useState('')
     
    
     let [listOfPosts, setListOfPosts] = useState([])
@@ -32,7 +37,21 @@ const Blog = () => {
     Optional TODO: Add dates to the posts
     */}
 
-    <BlogPost addToList={addToList}/>
+
+    <UserInput 
+    author={author}
+    setAuthor={setAuthor}
+    title={title}
+    setTitle={setTitle}
+    content={content}
+    setContent={setContent}/>
+
+    <BlogPost addToList={addToList} author={author}
+    setAuthor={setAuthor}
+    title={title}
+    setTitle={setTitle}
+    content={content}
+    setContent={setContent}/>
 
 
     {listOfPosts.map(post =>{
@@ -46,6 +65,7 @@ const Blog = () => {
             </>
         )
     })}
+
     </>
   )
 }
